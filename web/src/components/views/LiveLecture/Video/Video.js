@@ -1,6 +1,6 @@
 import React from "react";
 import { educatorConnect, educateeConnect } from "./connect";
-import Subtitle from "../Subtitle/Subtitle";
+import VideoButton from "../Subtitle/VideoButton";
 import "./video.css";
 import { store } from "../../../firebase";
 
@@ -54,7 +54,7 @@ const Video = ({ userInfo, lectureInfo, onExit }) => {
     });
   };
   // share
-  const [isShare, setIsShare] = React.useState(true);
+  const [isShare, setIsShare] = React.useState(false);
   /*
    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
    위에 false 값을 true로 수정하면 강의 시작시 디폴트 송출 영상이 공유 화면
@@ -111,7 +111,7 @@ const Video = ({ userInfo, lectureInfo, onExit }) => {
       ) : null}
       <div>
         <video id="video" ref={videoRef} autoPlay playsInline muted></video>
-        <Subtitle
+        <VideoButton
           changeIsShare={changeIsShare}
           userInfo={userInfo}
           onExit={onExit2}

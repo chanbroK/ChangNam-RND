@@ -9,7 +9,7 @@ type Prop = {
   onExit: () => void;
   lectureInfo: type.LectureInfo;
 };
-const Subtitle = (prop: Prop) => {
+const VideoButton = (prop: Prop) => {
   const { webkitSpeechRecognition } = window as any;
 
   const recognition = new webkitSpeechRecognition();
@@ -20,19 +20,18 @@ const Subtitle = (prop: Prop) => {
   const translateRef = React.useRef<HTMLSpanElement>(null);
   const [visibleSub, setVisibleSub] = React.useState(false);
   const [visibleTrans, setVisibleTrans] = React.useState(false);
-  //형찬
   const isProf = prop.userInfo.isProfessor === "on";
   const btnShareRef = React.useRef<HTMLButtonElement>(null);
   const btnShareClick = () => {
     const cur = prop.changeIsShare();
     if (cur) {
-      //현재 공유중
+      // 컴퓨터 화면 공유중
       if (btnShareRef.current) {
         btnShareRef.current.innerHTML = "화면 공유";
         prop.changeIsShare(false);
       }
     } else {
-      // 현재 공유중 X
+      // 캡 화면 공유
       if (btnShareRef.current) {
         btnShareRef.current.innerHTML = "공유 중지";
         prop.changeIsShare(true);
@@ -40,7 +39,6 @@ const Subtitle = (prop: Prop) => {
     }
   };
 
-  // const FIRST_CHAR = /\S/;
   const TWO_LINE = /\n\n/g;
   const ONE_LINE = /\n/g;
 
@@ -71,7 +69,6 @@ const Subtitle = (prop: Prop) => {
    * 음성 인식 종료 처리
    */
   recognition.onend = function () {
-    //console.log("onend", arguments);
     isRecognizing = false;
 
     if (ignoreEndProcess) {
@@ -79,7 +76,6 @@ const Subtitle = (prop: Prop) => {
     }
 
     if (!finalTranscript) {
-      //console.log("empty finalTranscript");
       return false;
     }
   };
@@ -88,8 +84,6 @@ const Subtitle = (prop: Prop) => {
    * 음성 인식 결과 처리
    */
   recognition.onresult = function (event) {
-    // console.log("onresult", event);
-
     let interimTranscript = "";
     let finalSub = "";
 
@@ -121,16 +115,17 @@ const Subtitle = (prop: Prop) => {
     }
 
     finalSub = linebreak(firstText + "\n" + secondText);
-    ///save in tempSub
     store.collection("Lecture").doc(prop.lectureInfo.Name).update({ tempSub: finalSub });
+
     // 번역기능 오프
     store.collection("Lecture").doc(prop.lectureInfo.Name).update({ tempTrans: finalSub });
     // 번역기능 온
-    // KotoEn(finalSub).then(resultText => {
-    //   //save in tempTrans
-    //   store.collection("Lecture").doc(prop.lectureInfo.Name).update({ tempTrans: resultText });
-    // });
-    /// save in subTitle and Translate for record lecture
+
+    /*
+     KotoEn(finalSub).then(resultText => {
+       store.collection("Lecture").doc(prop.lectureInfo.Name).update({ tempTrans: resultText });
+    });
+     */
     if (fireTime !== 0 && fireTime !== undefined && firstText !== "" && changeFirst) {
       if (fireTime !== 0) {
         fireTime = fireTime - 1;
@@ -156,9 +151,6 @@ const Subtitle = (prop: Prop) => {
       fireTime = 0;
       changeFirst = false;
     }
-
-    // console.log("finalTranscript", finalTranscript);
-    // console.log("interimTranscript", interimTranscript);
   };
 
   /**
@@ -174,7 +166,6 @@ const Subtitle = (prop: Prop) => {
 
   /**
    * 개행 처리
-   * @param {string} s
    */
   const linebreak = s => {
     return s.replace(TWO_LINE, "<p></p>").replace(ONE_LINE, "<br>");
@@ -260,15 +251,15 @@ const Subtitle = (prop: Prop) => {
           }}
         >
           <span
-            className="final"
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-            ref={finalRef}
-          ></span>
+    className="final"
+    style={{
+      color: "white",
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "center",
+    }}
+    ref={finalRef}
+    />
         </div>
         <div
           className="result overflow-auto"
@@ -279,15 +270,15 @@ const Subtitle = (prop: Prop) => {
           }}
         >
           <span
-            className="translate"
-            style={{
-              color: "white",
-              fontSize: 20,
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-            ref={translateRef}
-          ></span>
+    className="translate"
+    style={{
+      color: "white",
+      fontSize: 20,
+      fontWeight: "bold",
+      textAlign: "center",
+    }}
+    ref={translateRef}
+    />
         </div>
       </div>
       <div
@@ -304,7 +295,9 @@ const Subtitle = (prop: Prop) => {
         }}
       >
         {isProf ? (
-          //////////////////////////교수/////////////////////
+          /*
+          교수 Button
+           */
           <div>
             <div
               className="share_btn"
@@ -331,8 +324,8 @@ const Subtitle = (prop: Prop) => {
                   borderColor: "black",
                 }}
               >
-                <i className="fas fa-share-square" style={{ marginRight: "20px" }} />
-                공유
+                {/*<i className="fas fa-share-square" style={{ marginRight: "20px" }} />*/}
+                화면 공유
               </button>
             </div>
             <div
@@ -363,8 +356,9 @@ const Subtitle = (prop: Prop) => {
             </div>
           </div>
         ) : (
-          ///////////////////////////////////학생////////////////////////////////////
-          ///////////////////////////////////학생////////////////////////////////////
+          /*
+          학생기준 Button
+           */
           <div style={{ position: "relative", top: "0px" }}>
             <div
               className="subtitle_btn"
@@ -392,7 +386,7 @@ const Subtitle = (prop: Prop) => {
                   borderColor: "black",
                 }}
               >
-                <i className="far fa-closed-captioning" style={{ marginRight: "20px" }}></i>
+                {/*<i className="far fa-closed-captioning" style={{marginRight: "20px"}}/>*/}
                 자막 활성화
               </button>
             </div>
@@ -421,7 +415,7 @@ const Subtitle = (prop: Prop) => {
                   borderColor: "black",
                 }}
               >
-                <i className="fas fa-sign-language" style={{ marginRight: "20px" }} />
+                {/*<i className="fas fa-sign-language" style={{ marginRight: "20px" }} />*/}
                 번역 활성화
               </button>
             </div>
@@ -459,4 +453,4 @@ const Subtitle = (prop: Prop) => {
   );
 };
 
-export default Subtitle;
+export default VideoButton;

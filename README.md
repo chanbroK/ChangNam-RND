@@ -1,8 +1,6 @@
-# OnTact
-메인 레포입니다.
+# ChangNam-RND
+## web 
+React
 
-## Web 
-웹 개발 관련 코드
-
-## Function
-서버 쪽 코드(Background Function)
+## socket
+소켓 통신을 위한 소켓 서버
