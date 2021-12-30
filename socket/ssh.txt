@@ -1,0 +1,9 @@
+IP : cnrnd@13.209.243.231
+PW : cndska1!
+
+HOW TO?
+In terminal
+>> ssh cnrnd@[IP]
+>> PW
+
+// TODO = sudo 를 통해 EC2 node 버전 업데이트 v12.22.8
