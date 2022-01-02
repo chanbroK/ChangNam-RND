@@ -10,6 +10,9 @@ app.use(cors());
 const http = require("http");
 const port = 4000;
 const Index = "/index.html";
+const naverDev = {
+    id: "r2Dn0DLfFIVvmVwJdnB5", pw: "cCboqqhCh0"
+}
 app.set("port", port);
 
 //https://jinhyukoo.github.io/js/2020/12/13/peerJS%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0.html
@@ -17,21 +20,7 @@ app.get("/", (req, res) => {
     res.sendFile(Index, {root: __dirname});
 });
 
-//경원
-// ID : nXKrFtze25Ega3Hb2VHN
-// secret : d45U4kaKGG
-//형찬
-// ID : KWs9Ziq6kJKhiZRNbrW5
-// secret : SbPxW5FnuS
-//주혁
-// ID : AUQpEFdrXtvFKNOcjGKO
-// secret : hs8YBpxhZq
-//재호
-// ID : e2O6A9FbaJKz056vHYsy
-// secret : 4pC9nipoqx
-//종민
-// ID : Mo_d0dmRjBOaHTb6qMqc
-// secret : xsRNSeVZUN
+
 app.post("/stt", async (req, res) => {
     try {
         const result = await axios({
@@ -43,8 +32,8 @@ app.post("/stt", async (req, res) => {
                 text: req.body.text,
             },
             headers: {
-                "X-Naver-Client-Id": "Mo_d0dmRjBOaHTb6qMqc",
-                "X-Naver-Client-Secret": "xsRNSeVZUN",
+                "X-Naver-Client-Id": naverDev.id,
+                "X-Naver-Client-Secret": naverDev.pw,
                 Accept: "application/json",
             },
         });
