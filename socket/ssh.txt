@@ -6,3 +6,7 @@ In terminal
 >> ssh cnrnd@13.209.243.231
 >> PW
 
+
+ps -ef|grep node 로 nohup으로 실행중인 socket 확인
+
+

@@ -51,7 +51,7 @@ const server = http.createServer(app);
 server.listen(port, () => console.log(`listen in ${port} port`));
 const io = require("socket.io")(server, {
     cors: {
-        origin: ["http://localhost:3000", "https://capstone-925e4.web.app"],
+        origin: ["http://localhost:3000", "https://chungnam-rnd.web.app"],
         methods: ["GET", "POST"],
     },
 });
