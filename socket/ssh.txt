@@ -9,4 +9,4 @@ In terminal
 
 ps -ef|grep node 로 nohup으로 실행중인 socket 확인
 
-
+//TODO EC2 SSL 문제 해결
