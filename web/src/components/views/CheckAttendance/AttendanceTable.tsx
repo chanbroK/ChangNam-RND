@@ -1,7 +1,7 @@
 import React from "react";
-import * as type from "../../../../type";
-import {getAttendanceById} from "../../../../utils/Lecture";
-import {UseAuth} from "../../../../hoc/AuthContext";
+import * as type from "../../type";
+import {getAttendanceById} from "../../utils/Lecture";
+import {UseAuth} from "../../AuthContext";
 
 type Prop = {
     lectureId: string;
@@ -34,13 +34,9 @@ export const AttendanceTable = (prop: Prop) => {
                                     <span
                                         className="badge badge-success"
                                         style={{fontSize: "1rem"}}
-                                    >
-                    출석
-                  </span>
+                                    >출석</span>
                                 ) : (
-                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>
-                    출석
-                  </span>
+                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>출석</span>
                                 )}
                             </div>
                             <div
@@ -52,13 +48,9 @@ export const AttendanceTable = (prop: Prop) => {
                                     <span
                                         className="badge badge-warning"
                                         style={{fontSize: "1rem"}}
-                                    >
-                    지각
-                  </span>
+                                    >지각</span>
                                 ) : (
-                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>
-                    지각
-                  </span>
+                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>지각</span>
                                 )}{" "}
                             </div>
                             <div
@@ -70,13 +62,9 @@ export const AttendanceTable = (prop: Prop) => {
                                     <span
                                         className="badge badge-danger"
                                         style={{fontSize: "1rem"}}
-                                    >
-                    결석
-                  </span>
+                                    >결석</span>
                                 ) : (
-                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>
-                    결석
-                  </span>
+                                    <span style={{fontSize: "1rem", fontWeight: "bold"}}>결석</span>
                                 )}{" "}
                             </div>
                         </div>

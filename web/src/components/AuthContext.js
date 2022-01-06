@@ -1,6 +1,6 @@
 import React from "react";
-import {getUserInfo, getCurrentUserUid} from "../utils/Auth";
-import {auth, store} from "../firebase";
+import {getUserInfo, getCurrentUserUid} from "./utils/Auth";
+import {auth, store} from "./firebase";
 
 const AuthContext = React.createContext();
 

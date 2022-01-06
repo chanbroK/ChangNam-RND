@@ -1,4 +1,3 @@
-import {makeAlarm} from "./../../../utils/Alarm";
 import io from "socket.io-client";
 import Peer from "peerjs";
 
@@ -98,8 +97,6 @@ export const educatorConnect = (
     });
 
     socket.on("user-connected", userId => {
-        makeAlarm(`${userId}님이 입장했습니다.`, lectureName);
-
         //steam 수신 peer 연결
         // userid : 상대방 아이디
         console.log("connected with :", userId);

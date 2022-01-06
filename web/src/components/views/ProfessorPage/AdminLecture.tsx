@@ -1,5 +1,4 @@
 import React from "react";
-import "./Sections/AdminLecture.css";
 import StudentList from "./Sections/StudentList";
 import {Link} from "react-router-dom";
 import AttendBoard from "./Sections/AttendBoard";

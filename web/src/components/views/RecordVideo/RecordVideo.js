@@ -7,7 +7,7 @@ import screenfull from "screenfull";
 import {Link} from "react-router-dom";
 import {Card} from "react-bootstrap";
 import {getBookmark, addBookmark, removeBookmark} from "../../utils/Lecture";
-import {UseAuth} from "../../hoc/AuthContext";
+import {UseAuth} from "../../AuthContext";
 import {storage, store} from "../../firebase";
 import {MDBIcon} from "mdbreact";
 

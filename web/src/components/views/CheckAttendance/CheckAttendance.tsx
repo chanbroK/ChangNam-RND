@@ -1,8 +1,7 @@
-import React from "react";
-import AttendanceTable from "./AttendenceTable/AttendanceTable";
+import AttendanceTable from "./AttendanceTable";
 import {Link} from "react-router-dom";
 
-export const CheckAttendence = ({match}) => {
+export const CheckAttendance = ({match}) => {
     return (
         <div style={{textAlign: "center"}}>
             <AttendanceTable lectureId={match.params.lecture}/>
@@ -24,4 +23,4 @@ export const CheckAttendence = ({match}) => {
     );
 };
 
-export default CheckAttendence;
+export default CheckAttendance;
