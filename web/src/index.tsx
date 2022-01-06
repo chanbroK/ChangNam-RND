@@ -1,16 +1,64 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import { BrowserRouter } from "react-router-dom";
-import App from "./components/App";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+import {AuthProvider} from "./components/hoc/AuthContext";
+import NavBar from "./components/views/Navbar/NavBar";
+import LoginPage from "./components/views/LoginPage/LoginPage";
+import signUp from "./components/views/signUp/signUp";
+import StudentPage from "./components/views/StudentPage/StudentPage";
+import ProfessorPage from "./components/views/ProfessorPage/ProfessorPage";
+import AdminLecture from "./components/views/ProfessorPage/AdminLecture";
+import CheckAttendence from "./components/views/StudentPage/CheckAttendence/CheckAttendence";
+import RecordLectureList from "./components/views/RecordLectureList/RecordLectureList";
+import addlecture from "./components/views/ProfessorPage/addlecture";
+import LiveLecture from "./components/views/LiveLecture/LiveLecture";
+import RecordVideo from "./components/views/RecordVideo/RecordVideo";
+import React, {Suspense} from "react";
 
-  document.getElementById("root")
+ReactDOM.render(
+    <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+            <AuthProvider>
+                <NavBar/>
+                <div style={{paddingTop: "75px"}}>
+                    <Switch>
+                        <Route exact path="/" component={LoginPage}/>
+                        <Route path="/signup" component={signUp}/>
+                        <Route exact path="/studentpage" component={StudentPage}/>
+                        <Route exact path="/professorpage" component={ProfessorPage}/>
+                        <Route
+                            exact
+                            path="/professorpage/adminlecture/:lecture"
+                            component={AdminLecture}
+                        />
+                        <Route
+                            exact
+                            path="/studentpage/checkattendence/:lecture"
+                            component={CheckAttendence}
+                        />
+                        <Route
+                            path="/studentpage/recordlecturelist/:lecture"
+                            component={RecordLectureList}
+                        />
+                        <Route
+                            exact
+                            path="/professorpage/addlecture"
+                            component={addlecture}
+                        />
+                        <Route exact path="/livelecture/:lecture" component={LiveLecture}/>
+                        <Route
+                            path="/recordvideo/:lecture/:round"
+                            component={RecordVideo}
+                        />
+                    </Switch>
+                </div>
+            </AuthProvider>
+        </Suspense>
+    </BrowserRouter>
+    ,
+
+    document.getElementById("root")
 );
