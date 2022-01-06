@@ -1,5 +1,5 @@
-import "./Sections/Navbar.css";
-import logo from "./Sections/onTact.png";
+import "./Navbar.css";
+import navLogo from "../../resource/NavLogo.png";
 import {Link} from "react-router-dom";
 import Logout from "../Logout/Logout";
 import {UseAuth} from "../../hoc/AuthContext";
@@ -19,12 +19,12 @@ function NavBar() {
             <div className="menu__logo">
                 <Link to="/">
                     <img
-                        src={logo}
+                        src={navLogo}
                         style={{
                             width: "100px",
-                            height: "30px",
+                            height: "40px",
                         }}
-                        alt="logo"/>
+                        alt="NavLogo"/>
                 </Link>
             </div>
 

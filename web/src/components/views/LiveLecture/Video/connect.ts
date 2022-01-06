@@ -5,7 +5,7 @@ import Peer from "peerjs";
 type PeerList = {
     [userId: string]: Peer.MediaConnection;
 };
-const serverURL = "13.209.243.231:4000";
+const serverURL = "https://13.209.243.231:4000";
 let peerList: PeerList = {};
 let peerIds: string[] = [];
 let socket;
@@ -13,6 +13,8 @@ export const getSocket = () => {
     if (socket === undefined) {
         socket = io(serverURL, {
             transports: ["polling"],
+            secure: true,
+            rejectUnauthorized: false
         });
         console.log("get socket", socket);
     }

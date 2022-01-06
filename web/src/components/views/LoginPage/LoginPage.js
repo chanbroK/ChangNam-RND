@@ -1,8 +1,7 @@
 import React, {useRef, useState} from "react";
 import {auth, store} from "../../firebase";
-import logo_desc from "../../resource/logo_desc.png";
-import backgroundImage from "../../resource/backgroudImgae1.png";
-import logoImage from "../../resource/Logo1.png"
+import backgroundImage from "../../resource/LoginPageImage1.png";
+import logoImage from "../../resource/LoginPageLogo1.png"
 import {Form, Card, Alert} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
 import {UseAuth} from "../../hoc/AuthContext";

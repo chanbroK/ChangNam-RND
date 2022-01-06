@@ -54,6 +54,8 @@ const io = require("socket.io")(server, {
         origin: ["http://localhost:3000", "https://chungnam-rnd.web.app"],
         methods: ["GET", "POST"],
     },
+    secure: false,
+    rejectUnauthorized: false
 });
 io.on("connection", socket => {
     console.log("[connected from]", socket.id, new Date());
