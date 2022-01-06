@@ -21,11 +21,11 @@ const Video = ({userInfo, lectureInfo, onExit}) => {
         download();
     };
     const download = () => {
-        var blob = new Blob(recordChunk, {
+        let blob = new Blob(recordChunk, {
             type: "video/mp4",
         });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement("a");
         document.body.appendChild(a);
         a.style = "display: none";
         a.href = url;
@@ -101,16 +101,8 @@ const Video = ({userInfo, lectureInfo, onExit}) => {
 
     return (
         <div>
-            {peers !== [] && userInfo.isProfessor === "on" ? (
-                <div style={{backgroundColor: "#c4c4c4", fontWeight: "bold"}}>
-                    &nbsp; &nbsp; 현재 접속자 &nbsp;: &nbsp;{" "}
-                    {peers.map(peer => {
-                        return <span>{peer} &nbsp;|&nbsp;</span>;
-                    })}
-                </div>
-            ) : null}
             <div>
-                <video id="video" ref={videoRef} autoPlay playsInline muted></video>
+                <video id="video" ref={videoRef} autoPlay playsInline muted/>
                 <VideoButton
                     changeIsShare={changeIsShare}
                     userInfo={userInfo}

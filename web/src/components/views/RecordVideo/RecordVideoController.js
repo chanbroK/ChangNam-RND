@@ -91,28 +91,28 @@ const PrettoSlider = withStyles({
     },
 })(Slider);
 
-export default function Playcontrol({
-                                        onPlayPause,
-                                        playing,
-                                        onRewind,
-                                        onFastForward,
-                                        muted,
-                                        onMute,
-                                        onVolumeChange,
-                                        onVolumeSeekUp,
-                                        volume,
-                                        onPlaybackRateChange,
-                                        playbackRate,
-                                        onToggleFullScreen,
-                                        played,
-                                        onSeek,
-                                        onSeekMouseDown,
-                                        onSeekMouseUp,
-                                        elapsedTime,
-                                        totalDuration,
-                                        onChangeDisplayFormat,
-                                        onBookmark,
-                                    }) {
+export default function RecordVideoController({
+                                                  onPlayPause,
+                                                  playing,
+                                                  onRewind,
+                                                  onFastForward,
+                                                  muted,
+                                                  onMute,
+                                                  onVolumeChange,
+                                                  onVolumeSeekUp,
+                                                  volume,
+                                                  onPlaybackRateChange,
+                                                  playbackRate,
+                                                  onToggleFullScreen,
+                                                  played,
+                                                  onSeek,
+                                                  onSeekMouseDown,
+                                                  onSeekMouseUp,
+                                                  elapsedTime,
+                                                  totalDuration,
+                                                  onChangeDisplayFormat,
+                                                  onBookmark,
+                                              }) {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -139,16 +139,6 @@ export default function Playcontrol({
                 <Grid item>
                     <h5 style={{color: "#fff"}}>Video Title</h5>
                 </Grid>
-                {/* <Grid item>
-          <Button
-            onClick={onBookmark}
-            variant="contained"
-            color="primary"
-            startIcon={<BookmarkIcon />}
-          >
-            bookmark
-          </Button>
-        </Grid> */}
             </Grid>
 
             {/* middle control */}

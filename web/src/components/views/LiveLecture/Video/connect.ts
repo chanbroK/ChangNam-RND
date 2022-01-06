@@ -4,7 +4,8 @@ import Peer from "peerjs";
 type PeerList = {
     [userId: string]: Peer.MediaConnection;
 };
-const serverURL = "https://13.209.243.231:4000";
+const serverURL = "https://capstone-ontact.herokuapp.com/";
+// const serverURL = "https://13.209.243.231:4000";
 let peerList: PeerList = {};
 let peerIds: string[] = [];
 let socket;

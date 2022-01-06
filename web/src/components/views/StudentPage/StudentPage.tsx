@@ -45,7 +45,7 @@ function StudentPage() {
                         </div>
                     </div>
                     <div className="d-flex flex-row">
-                        <Link to={`/studentpage/checkattendence/${lecture.Name}`}>
+                        <Link to={`/studentpage/checkattendance/${lecture.Name}`}>
                             <button
                                 className="btn btn-success mr-2 font-weight-bold"
                                 style={{fontSize: "1rem"}}

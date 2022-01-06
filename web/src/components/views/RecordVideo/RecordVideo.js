@@ -1,8 +1,8 @@
-import React, {useState, useRef} from "react";
+import React from "react";
 import ReactPlayer from "react-player/lazy";
 import {makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Playercontrol from "./Playcontrol";
+import Playercontrol from "./RecordVideoController";
 import screenfull from "screenfull";
 import {Link} from "react-router-dom";
 import {Card} from "react-bootstrap";
@@ -34,12 +34,12 @@ const format = seconds => {
 };
 
 export default function RecordVideo({match}) {
-    const [timeDisplayFormat, setTimeDisplayFormat] = useState("normal");
-    const [Bookmarks, setBookmarks] = useState([]);
-    const [firstPlay, setFirstPlay] = useState(true);
+    const [timeDisplayFormat, setTimeDisplayFormat] = React.useState("normal");
+    const [Bookmarks, setBookmarks] = React.useState([]);
+    const [firstPlay, setFirstPlay] = React.useState(true);
 
     const classes = useStyles();
-    const [state, setState] = useState({
+    const [state, setState] = React.useState({
         playing: false,
         muted: true,
         volume: 0.5,
@@ -58,17 +58,16 @@ export default function RecordVideo({match}) {
     };
     const {playing, muted, volume, playbackRate, played, seeking, comments} = state;
 
-    const playerRef = useRef(null);
-    const playerContainerRef = useRef(null);
-    const signRef = useRef(null);
-    const signContainerRef = useRef(null);
+    const playerRef = React.useRef(null);
+    const playerContainerRef = React.useRef(null);
+    const signRef = React.useRef(null);
+    const signContainerRef = React.useRef(null);
 
-    //경원
-    const [video, loadVideo] = useState();
+    const [video, loadVideo] = React.useState();
     if (video === undefined) {
         storage
             .ref()
-            .child(`testtest2.mp4`)
+            .child(`test.mp4`)
             .getDownloadURL()
             .then(url => {
                 let xhr = new XMLHttpRequest();
@@ -85,11 +84,11 @@ export default function RecordVideo({match}) {
             });
     }
 
-    const [signVideo, loadSignVideo] = useState();
+    const [signVideo, loadSignVideo] = React.useState();
     if (signVideo === undefined) {
         storage
             .ref()
-            .child(`testtest2.mp4`)
+            .child(`test.mp4`)
             .getDownloadURL()
             .then(url => {
                 let xhr = new XMLHttpRequest();
@@ -177,8 +176,6 @@ export default function RecordVideo({match}) {
             }
         }
     }, [Math.round(getTime()), playerRef.current]);
-    //
-    //형찬
     const userInfo = UseAuth().userInfo;
     const lectureId = match.params.lecture;
     const round = match.params.round;
@@ -213,7 +210,7 @@ export default function RecordVideo({match}) {
         setState({
             ...state,
             volume: parseFloat(newValue / 100),
-            muted: newValue === 0 ? true : false,
+            muted: newValue === 0,
         });
     };
 
@@ -221,7 +218,7 @@ export default function RecordVideo({match}) {
         setState({
             ...state,
             volume: parseFloat(newValue / 100),
-            muted: newValue === 0 ? true : false,
+            muted: newValue === 0,
         });
     };
 
@@ -265,7 +262,7 @@ export default function RecordVideo({match}) {
     };
 
     let messages = "";
-    const inputRef = useRef(null);
+    const inputRef = React.useRef(null);
     const messagesend = e => {
         e.preventDefault();
         const newBookmark = {
@@ -412,7 +409,7 @@ export default function RecordVideo({match}) {
                                     display: "none",
                                 }}
                             >
-                                <video src={signVideo} ref={signRef} autoPlay muted></video>
+                                <video src={signVideo} ref={signRef} autoPlay muted/>
                             </div>
                             {/* 자막 */}
                             <div
@@ -427,7 +424,7 @@ export default function RecordVideo({match}) {
                     className="subtitle"
                     style={{color: "white", fontSize: 20, fontWeight: "bold", textAlign: "center"}}
                     ref={subtitle_spanref}
-                ></span>
+                />
                             </div>
                             {/* 수어 */}
                             <div
@@ -442,7 +439,7 @@ export default function RecordVideo({match}) {
                     className="subtitle"
                     style={{color: "white", fontSize: 20, fontWeight: "bold", textAlign: "center"}}
                     ref={translation_spanref}
-                ></span>
+                />
                             </div>
                             <div>
                                 <div
@@ -470,7 +467,7 @@ export default function RecordVideo({match}) {
                                             borderColor: "black",
                                         }}
                                     >
-                                        <i className="far fa-closed-captioning" style={{marginRight: "20px"}}></i>
+                                        <i className="far fa-closed-captioning" style={{marginRight: "20px"}}/>
                                         자막 활성화
                                     </button>
                                 </div>

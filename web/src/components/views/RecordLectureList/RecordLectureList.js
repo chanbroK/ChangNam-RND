@@ -39,6 +39,9 @@ export const RecordLectureList = ({match}) => {
             setLecInfo(doc.docs);
         });
     }
+
+    const classes = useStyles();
+    // 강의의 회차별 녹화강의 링크를 하나의 컴포넌트로 생성
     const ShowList = () => {
         let lecList;
         if (lecInfo !== undefined) {
@@ -67,7 +70,6 @@ export const RecordLectureList = ({match}) => {
         return <div>{lecList}</div>;
     };
 
-    const classes = useStyles();
     return (
         <div
             className="card overflow-auto"
@@ -85,20 +87,7 @@ export const RecordLectureList = ({match}) => {
                 color: "white",
             }}
         >
-          강의명
-        </span>
-                <span
-                    className="badge "
-                    style={{
-                        width: "300px",
-                        display: "block",
-                        fontSize: "1rem",
-                        backgroundColor: "#D65E2A",
-                        color: "white",
-                    }}
-                >
-          {match.params.lecture}
-        </span>
+            강의명 : {match.params.lecture}</span>
             </div>
             <ShowList/>
         </div>

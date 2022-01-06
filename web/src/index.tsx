@@ -10,7 +10,7 @@ import LoginPage from "./components/views/LoginPage/LoginPage";
 import SignUp from "./components/views/SignUp/SignUp";
 import StudentPage from "./components/views/StudentPage/StudentPage";
 import ProfessorPage from "./components/views/ProfessorPage/ProfessorPage";
-import AdminLecture from "./components/views/ProfessorPage/AdminLecture";
+import AdminLecture from "./components/views/AdminLecture/AdminLecture";
 import CheckAttendance from "./components/views/CheckAttendance/CheckAttendance";
 import RecordLectureList from "./components/views/RecordLectureList/RecordLectureList";
 import RegisterLecture from "./components/views/ProfessorPage/RegisterLecture";

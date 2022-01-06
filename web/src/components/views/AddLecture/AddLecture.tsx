@@ -14,7 +14,7 @@ type Student = {
     name: string;
 };
 
-export default function StudentList(prop: Prop) {
+export default function AddLecture(prop: Prop) {
     const [addStu, setAddStu] = React.useState(false);
     const idRef = React.useRef<HTMLInputElement>(null);
     const nameRef = React.useRef<HTMLInputElement>(null);
@@ -61,25 +61,6 @@ export default function StudentList(prop: Prop) {
     };
 
     return (
-        // <div>
-        //   <button
-        //     type="button"
-        //     className="button"
-        //     onClick={() => {
-        //       setOpen(current => !current);
-        //     }}
-        //   >
-        //     설정
-        //   </button>
-        //   <Popup open={open} contentStyle={{borderRadius:"1rem", minWidth:"690px"}} closeOnDocumentClick onClose={() => setOpen(false)}>
-        //   <div className="modal-setting">
-        //       <input>
-        //       dsdsds
-        //       </input>
-        //     </div>
-        //   </Popup>
-
-        // </div>
         <div>
             <div className="container overflow-auto" style={{height: "500px"}}>
                 <div className="row d-flex mt-4 ">

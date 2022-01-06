@@ -1,7 +1,7 @@
 import React from "react";
-import StudentList from "./Sections/StudentList";
+import StudentList from "./StudentList";
 import {Link} from "react-router-dom";
-import AttendBoard from "./Sections/AttendBoard";
+import AttendBoard from "./AttendBoard";
 import * as type from "../../type";
 
 const AdminLecture = ({match}) => {

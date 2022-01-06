@@ -1,5 +1,5 @@
 import React from "react";
-import StudentList from "./addLectureboard/StudentList";
+import AddLecture from "../AddLecture/AddLecture";
 import {makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import {Link} from "react-router-dom";
@@ -261,7 +261,7 @@ const RegisterLecture = () => {
                 </div>
             </Form>
             <div className="student_list">
-                <StudentList setStudentList={setList}/>
+                <AddLecture setStudentList={setList}/>
             </div>
             <Link onClick={useSave} to="/professorpage">
         <span
