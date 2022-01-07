@@ -50,7 +50,7 @@ const server = http.createServer(app);
 server.listen(port, () => console.log(`listen in ${port} port`));
 const io = require("socket.io")(server, {
     cors: {
-        origin: ["http://localhost:3000", "https://chungnam-rnd.web.app"],
+        origin: "*",
         methods: ["GET", "POST"],
     },
     secure: false,
