@@ -15,7 +15,6 @@ const naverDev = {
 }
 app.set("port", port);
 
-//https://jinhyukoo.github.io/js/2020/12/13/peerJS%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0.html
 app.get("/", (req, res) => {
     res.sendFile(Index, {root: __dirname});
 });
